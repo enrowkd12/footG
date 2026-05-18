@@ -183,15 +183,6 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserWithRecipesSerializer
 
-    def create(self, request):
-        serializer = UserCreateSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        return Response(
-            UserCreateSerializer(user).data,
-            status=status.HTTP_201_CREATED
-        )
-
     def get_serializer_class(self):
         if self.action in ('subscriptions', 'subscribe'):
             return UserWithRecipesSerializer

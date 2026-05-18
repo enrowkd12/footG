@@ -1,6 +1,6 @@
 services:
 
-  ffrontend:
+  frontend:
     container_name: foodgram-front
     build: ../frontend
     volumes:
@@ -37,6 +37,7 @@ services:
       - media_value:/var/html/media/
     depends_on:
       - backend
+      - frontend
 
 volumes:
   postgres_data:
